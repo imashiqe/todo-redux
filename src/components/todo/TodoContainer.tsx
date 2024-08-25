@@ -1,3 +1,5 @@
+
+
 const TodoContainer = () => {
     return (
         <div>
@@ -5,18 +7,10 @@ const TodoContainer = () => {
              <button>Add Todo</button>
              <button>Filter</button>
            </div>
-           <div className="bg-red-500 w-full h-[500px] rounded-xl p-5">
-              <div className="bg-white rounded-md flex justify-between items-center p-3">
-                 <input  type="checkbox" name="" id="" />
-                 <p>Todo  Title</p>
-                 <p>Time</p>
-                 <p>Description</p>
-                 <div>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                 </div>
-
-              </div>
+           <div className="bg-red-500 w-full h-full rounded-xl p-5 space-y-5">
+              <div className="bg-white p-5 text-2xl font-bold flex justify-center items-center rounded-md">
+                <p>There Is  no  task  pending</p>{''}
+                </div>
            </div>
         </div>
     );
