@@ -8,7 +8,7 @@ const AddTodoModal = () => {
     return (
         <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Share</Button>
+           <Button className="bg-primary-gradient text-xl font-semibold">Add Todo</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -28,10 +28,7 @@ const AddTodoModal = () => {
               readOnly
             />
           </div>
-          <Button type="submit" size="sm" className="px-3">
-            <span className="sr-only">Copy</span>
-            <Copy className="h-4 w-4" />
-          </Button>
+        
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
