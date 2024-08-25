@@ -1,3 +1,4 @@
+import { FormEvent, useState } from "react";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogTrigger,DialogHeader, DialogDescription,DialogTitle,DialogFooter,DialogClose } from "../ui/dialog";
 import { Input } from "../ui/input";
@@ -5,39 +6,56 @@ import { Label } from "../ui/label";
 
 
 const AddTodoModal = () => {
+     const  [task, setTask] = useState('');
+     const  [description, setDescription] = useState('');
+     const  onSubmit = (e: FormEvent) =>{
+         e.preventDefault();
+     }
+     console.log({task, description});
     return (
         <Dialog>
       <DialogTrigger asChild>
-           <Button className="bg-primary-gradient text-xl font-semibold">Add Todo</Button>
+      <Button className="bg-primary-gradient text-xl font-semibold">Add Todo</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+     
+      <DialogContent className="sm:max-w-[425px]">
+      <form onSubmit={onSubmit}>
         <DialogHeader>
-          <DialogTitle>Share link</DialogTitle>
+          <DialogTitle>Add Task</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this.
+           Add  Your Task That  You  Want To Do
           </DialogDescription>
         </DialogHeader>
-        <div className="flex items-center space-x-2">
-          <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="task" className="text-right">
+             Task
             </Label>
             <Input
-              id="link"
-              defaultValue="https://ui.shadcn.com/docs/installation"
-              readOnly
+            onBlur= {(e) => setTask(e.target.value)}
+              id="task"
+              defaultValue="Add Your Task"
+              className="col-span-3"
             />
           </div>
-        
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="description" className="text-right">
+              Description
+            </Label>
+            <Input
+              id="description"
+                onBlur= {(e) => setDescription(e.target.value)}
+              defaultValue="Add Your Description"
+              className="col-span-3"
+            />
+          </div>
         </div>
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-        </DialogFooter>
+           <div className="flex justify-end">
+          <Button type="submit">Save changes</Button>
+          </div>
+        </form>
       </DialogContent>
+        
     </Dialog>
     );
 
