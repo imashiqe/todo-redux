@@ -1,17 +1,19 @@
 import { FormEvent, useState } from "react";
 import { Button } from "../ui/button";
-import { Dialog, DialogContent, DialogTrigger,DialogHeader, DialogDescription,DialogTitle,DialogFooter,DialogClose } from "../ui/dialog";
+import { Dialog, DialogContent, DialogTrigger,DialogHeader, DialogDescription,DialogTitle,DialogClose } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { useAppDispatch } from "../../redux/features/hooks";
 
 
 const AddTodoModal = () => {
      const  [task, setTask] = useState('');
      const  [description, setDescription] = useState('');
+     const dispatch = useAppDispatch();
      const  onSubmit = (e: FormEvent) =>{
          e.preventDefault();
      }
-     console.log({task, description});
+     dispatch({task, description});
     return (
         <Dialog>
       <DialogTrigger asChild>
@@ -51,7 +53,10 @@ const AddTodoModal = () => {
           </div>
         </div>
            <div className="flex justify-end">
-          <Button type="submit">Save changes</Button>
+            <DialogClose asChild>
+            <Button type="submit">Save changes</Button>
+                </DialogClose >
+         
           </div>
         </form>
       </DialogContent>
